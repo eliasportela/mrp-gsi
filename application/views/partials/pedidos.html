@@ -1,0 +1,75 @@
+
+  <div class="jumbotron" style="background-color:#0275d8; color: white;">
+		<h1 class="text-center">
+			MRP - Pedidos
+		</h1>
+	</div>
+
+	<div class="row">
+		<div class="col-md-2">
+			<h4>Pesquisar:</h4>
+		</div>
+		<div class="col-md-8">
+			<input ng-model="filtro" type="search" placeholder="Pesquisar Matéria Prima" class="form-control">
+		</div>
+		<div class="col-md-2 text-right">
+			<button class="btn btn-primary" data-toggle="modal" data-target="#Include" title="Cadastrar"><i class="fa fa-plus"></i></button>
+		</div>
+	</div>
+	<br>
+	<table class="table table-hover text-center">
+		<tr>
+			<th class="text-center">Matéria Prima</th>
+			<th class="text-center">Unidade de Medida</th>
+			<th class="text-center">Estoque</th>
+			<th class="text-center">Ação</th>
+		</tr>
+		<tr ng-repeat="mp in mps | filter: filtro">
+			<td>
+				<a href="" title="Editar">
+					{{mp.nome}}
+				</a>
+			</td>
+			<td>{{mp.um}}</td>
+			<td>{{mp.estoque}}</td>
+			<td class="text-center">
+				<a href="#" title="Remover"><button class="btn btn-danger"><i class="fa fa-times"></i></button></a>
+			</td>
+		</tr>
+	</table>
+
+<!-- Modal Matéria Prima -->
+<div class="container-fluid">
+  <div class="modal fade" id="Include" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2>Nova Matéria Prima</h2>
+        </div>
+        <div class="modal-body">
+        	<div class="row text-center">
+        		<div class="col-sm-1"></div>
+        		<div class="col-sm-10">
+					<label for="ds">Matéria Prima</label>
+					<input type="text" id="ds" placeholder="Descrição" class="form-control">	
+					<br>
+					<label for="uM">Unidade de Medida</label>
+					<select id="uM" class="form-control">
+						<option>Kilos</option>
+						<option>Metros</option>
+					</select>
+					<br>
+					<label for="es">Estoque</label>
+					<input type="text" placeholder="Estoque" class="form-control">
+					<br>
+					<button class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+					<button class="btn btn-primary" data-dismiss="modal">Confirmar</button>
+				</div>
+			</div>
+		</div>
+      </div>
+    </div>
+  </div>
+</div>
